@@ -46,14 +46,14 @@ const defaultSlides: SlideContent[] = [
     description: 'Efficient and professional services tailored for corporate travelers. Focus on what matters most.',
     buttonText: 'Learn More',
     buttonLink: '/corporate',
-    image: '/images/hero-image-4.png',
+    image: '/images/fjr/hero33.jpg',
   },
   {
     heading: 'Plan Your Perfect Journey',
     description: 'From departure to arrival, we handle every detail. Sit back, relax, and enjoy the ride.',
     buttonText: 'Start Planning',
     buttonLink: '/plan-journey',
-    image: '/images/hero-image-5.png',
+    image: '/images/fjr/airport2.jpg',
   },
 ]
 

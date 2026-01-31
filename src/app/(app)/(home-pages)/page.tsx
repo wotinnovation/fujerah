@@ -71,7 +71,7 @@ async function Page() {
       // subHeading="About Us"
       heading="Register for eServices"
       description="FIA is pleased to bring you a better experience to connect with us via our eService’s. Through our Portal, you can apply for various permits, NOC’s and other services to enhance your company and receive responses back to your inquiries to get your business connected at FIA."
-      image="/images/fjr/services.jpg"
+      image="/images/fjr/services1.jpg"
       imageAlt="About Us"
       layout="image-left"
       button={{
@@ -84,8 +84,8 @@ async function Page() {
      
       <SectionImageContent
       // subHeading="About Us"
-      heading="Our Story"
-      description="Founded in 2020, we started with a mission to make travel more accessible and meaningful for everyone. Today, we proudly serve travelers in over 150 countries worldwide and have facilitated over 5 million successful bookings."
+      heading="Landing Permission"
+      description="FIA has an open sky policy. To apply for landing permission, connect below on instructions and contact information."
       image="/images/fjr/land-1.jpg"
       imageAlt="About Us"
       layout="image-right"
@@ -135,13 +135,13 @@ async function Page() {
       data={[
         {
           id: 1,
-          img: '/images/hero-image.png',
+          img: '/images/fjr/airport.jpg',
           title: 'Getting Around the Airport',
           desc: 'Explore amazing destinations and find your perfect match',
         },
         {
           id: 2,
-          img: '/images/hero-image-3.png',
+          img: '/images/fjr/checkin.jpg',
           title: 'Booking',
           desc: 'Reserve your stay with our secure and simple booking system',
         },
@@ -163,8 +163,8 @@ async function Page() {
           </HeadingWithSub> */}
           {/* <SectionGridCategoryBox  /> */}
         {/* </div>  */}
-             {/* <SectionVideos />
-              <HeadingWithSub isCenter subheading={'For our esteemed partners and valued clients, we offer bespoke experiences tailored to exceed expectations, and cultural immersion across kerala’s most iconic destinations.'}>
+             <SectionVideos />
+              {/* <HeadingWithSub isCenter subheading={'For our esteemed partners and valued clients, we offer bespoke experiences tailored to exceed expectations, and cultural immersion across kerala’s most iconic destinations.'}>
             PARTNER'S AND CLIENTS
           </HeadingWithSub>
           <SectionGridCategoryBox  /> */}
