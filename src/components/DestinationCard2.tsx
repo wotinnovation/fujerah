@@ -27,10 +27,10 @@ const DestinationCard: FC<DestinationCardProps> = ({ size = 'default', className
     saleOff,
     isAds,
     price,
-    reviewStart,
+    
     reviewCount,
     duration,
-    maxTravelers,
+   
     difficulty,
   } = data
 
@@ -85,7 +85,7 @@ const DestinationCard: FC<DestinationCardProps> = ({ size = 'default', className
             </div>
             <div className="flex items-center gap-x-1.5">
               <HugeiconsIcon icon={UserMultiple02Icon} size={16} color="currentColor" strokeWidth={1.5} />
-              <span>Max {maxTravelers}</span>
+              
             </div>
           </div>
         )}
@@ -101,7 +101,7 @@ const DestinationCard: FC<DestinationCardProps> = ({ size = 'default', className
               )}
             </span>
           </div>
-          {!!reviewStart && <StartRating reviewCount={reviewCount} point={reviewStart} />}
+          
         </div>
       </div>
     )
