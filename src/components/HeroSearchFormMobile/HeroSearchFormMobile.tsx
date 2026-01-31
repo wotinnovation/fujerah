@@ -60,7 +60,7 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
         <div className="ms-3 flex-1 overflow-hidden text-start">
           <span className="block text-sm font-medium">Check your flights</span>
           <span className="mt-0.5 block text-xs font-light text-neutral-500 dark:text-neutral-400">
-            <span className="line-clamp-1">Airline, flight number or city</span>
+            
           </span>
         </div>
 
@@ -100,7 +100,7 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
                         >
                           <div className="relative">
                             <span className="sr-only">{tab.name}</span>
-                            <HugeiconsIcon icon={tab.icon} size={26} />
+                            <HugeiconsIcon icon={tab.icon} size={15} />
                             <span className="absolute top-full mt-1 hidden h-0.5 w-full bg-neutral-800 group-data-selected:block dark:bg-neutral-100" />
                           </div>
                         </Tab>

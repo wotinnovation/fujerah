@@ -37,7 +37,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
               alt="Logo"
               width={50}
               height={80}
-              className="h-[50px] w-[50px] object-contain"
+              className="h-[60px] w-[60px] object-contain"
             />
           </div>
 
@@ -52,7 +52,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
             aria-label="Open menu"
             className="flex-shrink-0 rounded-xl p-2 text-neutral-600 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
           >
-            <Menu className="h-6 w-6" strokeWidth={1.5} />
+            <Menu className="h-7 w-7" strokeWidth={1.8} />
           </button>
         </div>
       </div>
