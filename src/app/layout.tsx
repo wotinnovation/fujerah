@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import 'rc-slider/assets/index.css'
 import CustomizeControl from './customize-control'
 import ThemeProvider from './theme-provider'
+import FeedbackModal from './FeedbackModal'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -13,11 +14,31 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Chisfis',
-    default: 'Chisfis - Booking online React Next.js template',
+    template: '%s | Fujairah International Airport',
+    default: 'Fujairah International Airport - Premium Travel Services',
   },
-  description: 'Booking online & rental online Next.js Template',
-  keywords: ['Chisfis', 'Booking online', 'Rental online', 'React Next.js template'],
+  description: 'Experience seamless travel with Fujairah International Airport. Book shuttle services, explore destinations, and enjoy premium airport services in the UAE.',
+  keywords: [
+    'Fujairah International Airport',
+    'Fujairah Airport',
+    'UAE Airport',
+    'Airport Shuttle Services',
+    'Airport Transportation',
+    'Travel Services',
+    'Flight Booking',
+    'Airport Parking',
+  ],
+  openGraph: {
+    title: 'Fujairah International Airport - Premium Travel Services',
+    description: 'Experience seamless travel with Fujairah International Airport. Book shuttle services, explore destinations, and enjoy premium airport services.',
+    type: 'website',
+    locale: 'en_AE',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fujairah International Airport - Premium Travel Services',
+    description: 'Experience seamless travel with Fujairah International Airport. Book shuttle services and premium airport services.',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* For Chisfis's demo  -- you can remove it  */}
             <CustomizeControl />
+            <FeedbackModal />
           </div>
         </ThemeProvider>
       </body>
