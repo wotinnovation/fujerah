@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
 
             {/* For Chisfis's demo  -- you can remove it  */}
-            <CustomizeControl />
+            {/* <CustomizeControl /> */}
             <FeedbackModal />
           </div>
         </ThemeProvider>
