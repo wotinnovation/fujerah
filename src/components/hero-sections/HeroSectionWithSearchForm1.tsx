@@ -112,11 +112,13 @@ const HeroSectionWithSearchForm1 = ({
                 />
               </div>
             ))}
+            {/* Slight Blue Overlay for Mobile */}
+            <div className="absolute inset-0 bg-blue-900/20" />
           </div>
         </div>
 
         {/* Mobile Content Container - Positioned below image */}
-        <div className="relative -mt-20 px-4 z-10">
+        <div className="relative -mt-10 px-4 z-10">
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl">
             {/* Heading */}
             <div
@@ -125,7 +127,7 @@ const HeroSectionWithSearchForm1 = ({
                 isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
               )}
             >
-              <h1 className="text-xl font-semibold text-gray-800 mb-2 leading-tight drop-shadow-sm">
+              <h1 className="text-xl font-semibold text-red-600/90 mb-2 leading-tight ">
                 {currentSlide.heading}
               </h1>
             </div>
@@ -137,7 +139,7 @@ const HeroSectionWithSearchForm1 = ({
                 isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
               )}
             >
-              <p className="text-ls text-gray-700 mb-3 drop-shadow-sm line-clamp-2">
+              <p className="text-ls text-gray-700 mb-3 line-clamp-2">
                 {currentSlide.description}
               </p>
             </div>
@@ -181,9 +183,8 @@ const HeroSectionWithSearchForm1 = ({
               />
             </div>
           ))}
-          {/* Enhanced Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+          {/* Slight Blue Overlay */}
+          <div className="absolute inset-0 bg-blue-900/20" />
         </div>
 
         {/* Desktop Content Container */}
