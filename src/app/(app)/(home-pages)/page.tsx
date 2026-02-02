@@ -5,6 +5,7 @@ import HeroSectionWithSearchForm1 from '@/components/hero-sections/HeroSectionWi
 import HeroSearchForm from '@/components/HeroSearchForm/HeroSearchForm'
 import SectionBecomeAnAuthor from '@/components/SectionBecomeAnAuthor'
 import SectionClientSay from '@/components/SectionClientSay'
+import SectionFlightWallet from '@/components/Sectionflightwallet'
 import SectionGridAuthorBox from '@/components/SectionGridAuthorBox'
 import SectionGridCategoryBox from '@/components/SectionGridCategoryBox'
 import SectionGridFeatureDestinations from '@/components/SectionGridFeaturePlaces'
@@ -129,7 +130,7 @@ async function Page() {
 
 
         
-         <Divider />
+   
         <SectionHowItWork
       title="Quick Overview of FIA"
       subheading="Fujairah International Airport made easy for you."
@@ -157,6 +158,7 @@ async function Page() {
         {/* </div> */}
         {/* <SectionSubscribe2 /> */}
         <Divider />
+        <SectionFlightWallet />
 
         {/* <div>
           {/* <HeadingWithSub isCenter subheading={'For our esteemed partners and valued clients, we offer bespoke experiences tailored to exceed expectations, and cultural immersion across kerala’s most iconic destinations.'}>

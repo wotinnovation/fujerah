@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Plane, Briefcase, Search, Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { Plane, Briefcase, Search, Mail, Phone, MapPin, Clock, User } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Header() {
@@ -166,6 +166,15 @@ export default function Header() {
               >
                 <Search className="w-6 h-6 text-red-600 hover:text-red-700 transition-colors" strokeWidth={1.5} />
               </button>
+
+              {/* Profile Icon */}
+              <Link 
+                href="/login"
+                className="flex items-center justify-center"
+                aria-label="User Profile"
+              >
+                <User className="w-6 h-6 text-red-600 hover:text-red-700 transition-colors" strokeWidth={1.5} />
+              </Link>
             </div>
           </div>
         </div>

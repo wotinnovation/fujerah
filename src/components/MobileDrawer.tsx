@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Plane, Briefcase, X, ChevronDown } from 'lucide-react'
+import { Plane, Briefcase, X, ChevronDown, User } from 'lucide-react'
 import { useState } from 'react'
 import clsx from 'clsx'
 
@@ -175,13 +175,24 @@ export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
           <Link href="/" onClick={onClose}>
             <span className="text-lg font-bold text-red-600">FIA</span>
           </Link>
-          <button
-            onClick={onClose}
-            className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 transition-colors dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-            aria-label="Close menu"
-          >
-            <X className="h-5 w-5" strokeWidth={2} />
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Login/Profile Button */}
+            <Link
+              href="/login"
+              onClick={onClose}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              <User className="h-4 w-4" strokeWidth={2} />
+              <span>Login</span>
+            </Link>
+            <button
+              onClick={onClose}
+              className="rounded-lg p-1.5 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 transition-colors dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" strokeWidth={2} />
+            </button>
+          </div>
         </div>
 
         {/* Tab Switcher: Travellers / Corporate */}

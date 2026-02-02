@@ -31,7 +31,7 @@ const ServiceCard: FC<ServiceCardProps> = ({ className = '', service }) => {
         {/* Default Overlay - Always Visible */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
           <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2 drop-shadow-lg">
+            <h3 className="text-2xl lg:text-2xl xl:text-3xl font-bold text-white mb-2 drop-shadow-lg">
               {title}
             </h3>
           </div>
@@ -44,20 +44,20 @@ const ServiceCard: FC<ServiceCardProps> = ({ className = '', service }) => {
           {/* Content Container */}
           <div className="relative h-full flex flex-col justify-center items-center p-6 lg:p-8 text-center">
             {/* Title */}
-            <h3 className="text-xl lg:text-2xl font-bold text-white mb-3 drop-shadow-lg">
+            <h3 className="text-xl lg:text-xl xl:text-2xl font-bold text-white mb-3 drop-shadow-lg">
               {title}
             </h3>
             
             {/* Description */}
-            <p className="text-base lg:text-lg text-white/90 mb-6 max-w-md drop-shadow-md">
+            <p className="text-sm lg:text-base xl:text-lg text-white/90 mb-6 max-w-md drop-shadow-md">
               {description}
             </p>
             
             {/* Learn More Button */}
-            <div className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+            <div className="inline-flex items-center px-5 py-2.5 lg:px-6 lg:py-3 bg-red-600 hover:bg-red-700 text-white text-sm lg:text-base font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
               Learn More
               <svg 
-                className="w-5 h-5 ml-2" 
+                className="w-4 h-4 lg:w-5 lg:h-5 ml-2" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"

@@ -11,6 +11,7 @@ import 'rc-slider/assets/index.css'
 import React, { ReactNode } from 'react'
 import { Menu } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
   children: ReactNode
@@ -31,7 +32,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
       <div className="sticky top-0 z-20 border-b border-neutral-100 bg-white shadow-sm lg:hidden dark:border-neutral-800 dark:bg-neutral-900">
         <div className="container flex h-20 items-center justify-between gap-3">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Image
               src="/images/fjr/loader-logo.png"
               alt="Logo"
@@ -39,7 +40,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
               height={80}
               className="h-[60px] w-[60px] object-contain"
             />
-          </div>
+          </Link>
 
           {/* Search Form */}
           <div className="flex-1">
