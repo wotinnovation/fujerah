@@ -23,8 +23,15 @@ const SectionGridFeatureStays: FC<SectionGridFeatureStaysProps> = ({
 }) => {
   const tabs = ['All', 'Hotel room', 'Entire place', 'Private room', 'Shared room']
   const [activeTab, setActiveTab] = useState('All')
+  const [visibleCount, setVisibleCount] = useState(4)
 
-  // Filter stays based on active tab and limit to 4
+  // Reset visible count when tab changes
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab)
+    setVisibleCount(4)
+  }
+
+  // Filter stays based on active tab
   const filteredStays = useMemo(() => {
     let filtered = stayListings
     
@@ -34,9 +41,21 @@ const SectionGridFeatureStays: FC<SectionGridFeatureStaysProps> = ({
       )
     }
     
-    // Limit to only 4 stays
-    return filtered.slice(0, 4)
+    return filtered
   }, [activeTab, stayListings])
+
+  // Get visible stays based on visibleCount
+  const visibleStays = useMemo(() => {
+    return filteredStays.slice(0, visibleCount)
+  }, [filteredStays, visibleCount])
+
+  // Check if there are more items to show
+  const hasMoreItems = filteredStays.length > visibleCount
+
+  // Load more handler
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 4)
+  }
 
   return (
     <div className="relative">
@@ -45,14 +64,15 @@ const SectionGridFeatureStays: FC<SectionGridFeatureStaysProps> = ({
         subHeading={subHeading}
         tabs={tabs}
         heading={heading}
-        onChangeTab={setActiveTab}
-        rightButtonHref="/stays/all"
+        onChangeTab={handleTabChange}
+        onViewAllClick={hasMoreItems ? handleLoadMore : undefined}
+        showViewAll={hasMoreItems}
       />
       <div
         className={`mt-8 grid grid-cols-2 gap-x-3 gap-y-4 sm:gap-x-6 sm:gap-y-8 md:gap-x-8 md:gap-y-12 lg:grid-cols-4 ${gridClass}`}
       >
-        {filteredStays.length > 0 ? (
-          filteredStays.map((stay) => (
+        {visibleStays.length > 0 ? (
+          visibleStays.map((stay) => (
             <StayCard key={stay.id} data={stay} />
           ))
         ) : (

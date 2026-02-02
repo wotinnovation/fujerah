@@ -6,6 +6,8 @@ import CustomizeControl from './customize-control'
 import ThemeProvider from './theme-provider'
 import FeedbackModal from './FeedbackModal'
 
+import ShuttleServicesModal from './Shuttleservicesmodal'
+
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
@@ -48,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <div>
             {children}
-
+<ShuttleServicesModal />
             {/* For Chisfis's demo  -- you can remove it  */}
             {/* <CustomizeControl /> */}
             <FeedbackModal />

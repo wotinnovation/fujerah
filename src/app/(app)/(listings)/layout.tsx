@@ -6,14 +6,14 @@ import { ApplicationLayout } from '../application-layout'
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   return (
-    <ApplicationLayout header={<Header />}>
+    
       <div>
         <div className="container">
           {children}
-          <SectionOurFeatures  />
+    
         </div>
       </div>
-    </ApplicationLayout>
+    
   )
 }
 

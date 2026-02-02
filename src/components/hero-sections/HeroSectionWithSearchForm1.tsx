@@ -4,63 +4,16 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-
-interface SlideContent {
-  heading: string
-  description: string
-  buttonText: string
-  buttonLink: string
-  image: string
-}
+import { heroSlides } from '@/data/hero-slides-data'
 
 interface HeroSectionWithSearchForm1Props {
   className?: string
   searchForm?: React.ReactNode
-  slides?: SlideContent[]
 }
-
-const defaultSlides: SlideContent[] = [
-  {
-    heading: 'Complementary Shuttle Services',
-    description: 'Experience seamless airport transfers with our premium shuttle service. Comfort and convenience at every journey.',
-    buttonText: 'Book Your Ride',
-    buttonLink: '/shuttle-service',
-    image: '/images/fjr/slide-1.jpg',
-  },
-  {
-    heading: 'Discover Amazing Destinations',
-    description: 'Explore breathtaking locations and create unforgettable memories. Your adventure starts here.',
-    buttonText: 'Explore Destinations',
-    buttonLink: '/destinations',
-    image: '/images/fjr/slide-2.jpg',
-  },
-  {
-    heading: 'Luxury Travel Experiences',
-    description: 'Indulge in world-class accommodations and personalized service. Travel in style and comfort.',
-    buttonText: 'View Packages',
-    buttonLink: '/packages',
-    image: '/images/fjr/slide-3.jpg',
-  },
-  {
-    heading: 'Business Travel Solutions',
-    description: 'Efficient and professional services tailored for corporate travelers. Focus on what matters most.',
-    buttonText: 'Learn More',
-    buttonLink: '/corporate',
-    image: '/images/fjr/hero33.jpg',
-  },
-  {
-    heading: 'Plan Your Perfect Journey',
-    description: 'From departure to arrival, we handle every detail. Sit back, relax, and enjoy the ride.',
-    buttonText: 'Start Planning',
-    buttonLink: '/plan-journey',
-    image: '/images/fjr/airport2.jpg',
-  },
-]
 
 const HeroSectionWithSearchForm1 = ({
   className,
   searchForm,
-  slides = defaultSlides,
 }: HeroSectionWithSearchForm1Props) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -69,13 +22,13 @@ const HeroSectionWithSearchForm1 = ({
     const interval = setInterval(() => {
       setIsTransitioning(true)
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % heroSlides.length)
         setIsTransitioning(false)
       }, 500)
     }, 5000) // Change slide every 5 seconds
 
     return () => clearInterval(interval)
-  }, [slides.length])
+  }, [])
 
   const goToSlide = (index: number) => {
     setIsTransitioning(true)
@@ -85,7 +38,7 @@ const HeroSectionWithSearchForm1 = ({
     }, 500)
   }
 
-  const currentSlide = slides[currentIndex]
+  const currentSlide = heroSlides[currentIndex]
 
   return (
     <div className={clsx('relative w-full', className)}>
@@ -95,7 +48,7 @@ const HeroSectionWithSearchForm1 = ({
         <div className="relative h-[250px] overflow-hidden rounded-3xl">
           {/* Background Image Carousel */}
           <div className="absolute inset-0 rounded-3xl overflow-hidden">
-            {slides.map((slide, index) => (
+            {heroSlides.map((slide, index) => (
               <div
                 key={index}
                 className={clsx(
@@ -152,7 +105,7 @@ const HeroSectionWithSearchForm1 = ({
               )}
             >
               <Link 
-                href={currentSlide.buttonLink}
+                href={`/${currentSlide.slug}`}
                 className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 font-medium text-xs px-5 py-2 rounded-full shadow-xl transition-all duration-300 hover:bg-red-600 hover:border-red-600 hover:text-white hover:scale-105"
               >
                 {currentSlide.buttonText}
@@ -166,7 +119,7 @@ const HeroSectionWithSearchForm1 = ({
       <div className="hidden md:block relative h-[350px] xl:h-[400px] overflow-hidden rounded-3xl">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 rounded-3xl overflow-hidden">
-          {slides.map((slide, index) => (
+          {heroSlides.map((slide, index) => (
             <div
               key={index}
               className={clsx(
@@ -224,7 +177,7 @@ const HeroSectionWithSearchForm1 = ({
                 )}
               >
                 <Link 
-                  href={currentSlide.buttonLink}
+                  href={`/${currentSlide.slug}`}
                   className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold text-sm md:text-base px-6 py-2 md:px-8 md:py-3 rounded-full shadow-xl transition-all duration-300 hover:bg-red-600 hover:border-red-600 hover:scale-105"
                 >
                   {currentSlide.buttonText}
@@ -243,6 +196,23 @@ const HeroSectionWithSearchForm1 = ({
           </div>
         </div>
       )}
+
+      {/* Slide Indicators */}
+      {/* <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={clsx(
+              'transition-all duration-300',
+              currentIndex === index
+                ? 'w-8 h-2 bg-white rounded-full'
+                : 'w-2 h-2 bg-white/50 rounded-full hover:bg-white/75'
+            )}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div> */}
     </div>
   )
 }

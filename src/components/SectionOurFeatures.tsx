@@ -63,26 +63,7 @@ const SectionImageContent: FC<Props> = ({
 
   return (
     <div className={clsx('relative', className)}>
-      {/* Header Section
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <span className="inline-block px-4 py-2 rounded-full bg-primary-50 text-primary-600 text-sm font-medium tracking-wide uppercase dark:bg-primary-900/20 dark:text-primary-400">
-          {subHeading}
-        </span>
-        <Heading className="mt-6">{heading}</Heading>
-        {description && (
-          <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            {description}
-          </p>
-        )}
-        {button && (
-          <Link
-            href={button.href}
-            className={`mt-8 ${getButtonClasses(button.variant)}`}
-          >
-            {button.text}
-          </Link>
-        )}
-      </div> */}
+    
 
       {/* Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">

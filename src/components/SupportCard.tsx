@@ -17,21 +17,21 @@ const services: ServiceCard[] = [
     title: 'Premium Support',
     description: 'Get personalized assistance from our dedicated team available 24/7 for your comfort',
     buttonText: 'Get Support',
-    href: '/support'
+    href: '/ben-services/support'
   },
   {
     icon: CarFront,
     title: 'Valet Parking',
     description: 'Experience hassle-free premium parking with our convenient valet service',
     buttonText: 'Reserve Now',
-    href: '/valet-parking'
+    href: '/ben-services/valet-parking'
   },
   {
     icon: ShieldCheck,
     title: 'Travel Insurance',
     description: 'Protect your journey with comprehensive coverage for complete peace of mind',
     buttonText: 'Learn More',
-    href: '/insurance'
+    href: '/ben-services/insurance'
   }
 ]
 

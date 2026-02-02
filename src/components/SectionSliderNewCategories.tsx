@@ -1,7 +1,7 @@
 'use client'
 
 import ServiceCard from '@/components/ServiceCard'
-import { TService } from '@/data/services'
+import { TService } from '@/data/services-data'
 import clsx from 'clsx'
 import { FC } from 'react'
 

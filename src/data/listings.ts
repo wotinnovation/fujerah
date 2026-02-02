@@ -584,6 +584,7 @@ export const getDestinationListingByHandle = async (handle: string) => {
 
   return {
     ...(listing || {}),
+    reviewStart: 4.8, // Add this line - you can calculate it from reviewCount or set a default
     galleryImgs: [
       ...listing.galleryImgs,
       'https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',

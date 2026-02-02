@@ -21,7 +21,7 @@ import UsefulServicesSection from '@/components/SupportCard'
 import { getAuthors } from '@/data/authors'
 import { getStayCategories } from '@/data/categories'
 import { getDestinationListings, getStayListings } from '@/data/listings'
-import { getServices } from '@/data/services'
+import { getServices } from '@/data/services-data'
 import heroImage from '@/images/hero-right.png'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { Divider } from '@/shared/divider'
@@ -46,7 +46,7 @@ async function Page() {
         <HeroSectionWithSearchForm1
          
       
-          searchForm={<HeroSearchForm initTab="Destinations" />}
+          searchForm={<HeroSearchForm initTab="Flight Status" />}
         
         />
 
@@ -54,7 +54,9 @@ async function Page() {
           <HeadingWithSub subheading="Explore the best places to stay in the world.">
             Why Connect To FIA
           </HeadingWithSub>
-         <SectionServices services={await getServices()} />
+               <BgGlassmorphism />
+         <SectionServices services={await getServices()}  />
+         
         </div>
 
         <AsymmetricBentoGrid />
@@ -67,35 +69,34 @@ async function Page() {
         {/* <SectionOurFeatures className="py-14" /> */}
 
            
-     <SectionImageContent
-      // subHeading="About Us"
-      heading="Register for eServices"
-      description="FIA is pleased to bring you a better experience to connect with us via our eService’s. Through our Portal, you can apply for various permits, NOC’s and other services to enhance your company and receive responses back to your inquiries to get your business connected at FIA."
-      image="/images/fjr/services1.jpg"
-      imageAlt="About Us"
-      layout="image-left"
-      button={{
-        text: 'Learn More',
-        href: '/about',
-        variant: 'primary',
-      }}
-    />
-       <Divider />
-     
       <SectionImageContent
-      // subHeading="About Us"
-      heading="Landing Permission"
-      description="FIA has an open sky policy. To apply for landing permission, connect below on instructions and contact information."
-      image="/images/fjr/land-1.jpg"
-      imageAlt="About Us"
-      layout="image-right"
-      button={{
-        text: 'Learn More',
-        href: '/about',
-        variant: 'primary',
-      }}
-    />
-
+        heading="Register for eServices"
+        description="FIA is pleased to bring you a better experience to connect with us via our eService's. Through our Portal, you can apply for various permits, NOC's and other services to enhance your company and receive responses back to your inquiries to get your business connected at FIA."
+        image="/images/fjr/services1.jpg"
+        imageAlt="eServices Registration"
+        layout="image-left"
+        button={{
+          text: 'Learn More',
+          href: '/ben-services/eservices-registration',
+          variant: 'primary',
+        }}
+      />
+      
+      <Divider />
+     
+      {/* Landing Permission Section */}
+      <SectionImageContent
+        heading="Landing Permission"
+        description="FIA has an open sky policy. To apply for landing permission, connect below on instructions and contact information."
+        image="/images/fjr/land-1.jpg"
+        imageAlt="Landing Permission"
+        layout="image-right"
+        button={{
+          text: 'Learn More',
+          href: '/ben-services/landing-permission',
+          variant: 'primary',
+        }}
+      />
        <UsefulServicesSection />
           <Divider />
           {/* <SectionImageContent

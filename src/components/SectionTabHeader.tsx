@@ -14,6 +14,8 @@ interface Props {
   subHeading?: string
   onChangeTab?: (item: string) => void
   rightButtonHref?: string
+  onViewAllClick?: () => void
+  showViewAll?: boolean
 }
 
 const SectionTabHeader: FC<Props> = ({
@@ -23,6 +25,8 @@ const SectionTabHeader: FC<Props> = ({
   heading,
   onChangeTab,
   rightButtonHref = '/stay-categories/all',
+  onViewAllClick,
+  showViewAll = true,
 }) => {
   return (
     <div className="relative flex flex-col">
@@ -46,10 +50,22 @@ const SectionTabHeader: FC<Props> = ({
             </TabList>
           </TabGroup>
         </div>
-        <ButtonSecondary className="ml-auto shrink-0" href={rightButtonHref}>
-          <span>{T['common']['View all']}</span>
-          <ArrowRightIcon className="size-5 rtl:rotate-180" />
-        </ButtonSecondary>
+        {showViewAll && (
+          onViewAllClick ? (
+            <button 
+              className="ml-auto shrink-0 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium transition-colors hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600"
+              onClick={onViewAllClick}
+            >
+              <span>{T['common']['View all']}</span>
+              <ArrowRightIcon className="size-5 rtl:rotate-180" />
+            </button>
+          ) : (
+            <ButtonSecondary className="ml-auto shrink-0" href={rightButtonHref}>
+              <span>{T['common']['View all']}</span>
+              <ArrowRightIcon className="size-5 rtl:rotate-180" />
+            </ButtonSecondary>
+          )
+        )}
       </div>
     </div>
   )

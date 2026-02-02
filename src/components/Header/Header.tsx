@@ -285,7 +285,7 @@ export default function Header() {
 
                 {/* Right Menu Items - 70% */}
                 <div className="w-[70%] grid grid-cols-4 gap-8 p-8">
-                  {/* Column 1 */}
+                  {/* Column 1 - FIXED LINKS */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">eServices</h3>
                     <ul className="space-y-3">
@@ -297,7 +297,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 2 */}
+                  {/* Column 2 - FIXED LINKS */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">Business with FIA</h3>
                     <ul className="space-y-3">
@@ -309,7 +309,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 3 */}
+                  {/* Column 3 - FIXED LINKS */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">About FIA</h3>
                     <ul className="space-y-3">
@@ -321,7 +321,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 4 */}
+                  {/* Column 4 - FIXED LINKS */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">Media & Resources</h3>
                     <ul className="space-y-3">
@@ -338,113 +338,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
-  )
-}
-
-// Alternative version with simplified top bar
-export function HeaderSimplified() {
-  const [currentDate, setCurrentDate] = useState({
-    gregorian: '',
-    hijri: '',
-  })
-
-  useEffect(() => {
-    const updateDate = () => {
-      const options: Intl.DateTimeFormatOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'Asia/Dubai',
-      }
-      
-      const gregorianDate = new Date().toLocaleDateString('en-US', options)
-
-      const hijriOptions: Intl.DateTimeFormatOptions = {
-        calendar: 'islamic-umalqura',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'Asia/Dubai',
-      }
-      
-      const hijriDate = new Date().toLocaleDateString('en-US', hijriOptions)
-
-      setCurrentDate({
-        gregorian: gregorianDate,
-        hijri: hijriDate,
-      })
-    }
-
-    updateDate()
-    const interval = setInterval(updateDate, 60000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <header className="bg-white">
-      {/* Top Bar */}
-      <div className="bg-neutral-50 border-b border-neutral-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex h-11 items-center justify-between text-[10px]">
-            <div className="flex items-center gap-4 text-neutral-600">
-              <span>Fujairah, UAE</span>
-              <span>{currentDate.gregorian}</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/careers" className="text-neutral-600 hover:text-red-600">Careers</Link>
-              <Link href="/contact" className="text-neutral-600 hover:text-red-600">Contact Us</Link>
-              <button className="text-neutral-600 hover:text-red-600">العربية</button>
-              <a href="mailto:info@fja.ae" className="bg-red-600 text-white px-3 py-1 rounded">
-                info@fja.ae
-              </a>
-              <a href="tel:+97192226222" className="text-red-600">+971 9 2226222</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <div className="border-b border-neutral-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex h-24 items-center justify-between">
-            <Link href="/">
-              <Image
-                src="/images/logo.png"
-                alt="Fujairah International Airport"
-                width={240}
-                height={80}
-                className="h-16 w-auto"
-                priority
-              />
-            </Link>
-
-            <nav className="flex items-center gap-12">
-              <Link href="/travellers" className="flex items-center gap-3 group">
-                <Plane className="w-8 h-8 text-neutral-400 group-hover:text-red-600 transition-colors" strokeWidth={1.5} />
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-red-600">Travellers</span>
-                  <span className="text-xs text-neutral-600">Airport info, luggage guide, lost & found</span>
-                </div>
-              </Link>
-
-              <Link href="/corporate" className="flex items-center gap-3 group">
-                <Briefcase className="w-8 h-8 text-neutral-400 group-hover:text-red-600 transition-colors" strokeWidth={1.5} />
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-red-600">Corporate</span>
-                  <span className="text-xs text-neutral-600">eServices, business with FIA, about, media</span>
-                </div>
-              </Link>
-
-              <button aria-label="Search" className="ml-4">
-                <Search className="w-8 h-8 text-red-600 hover:text-red-700 transition-colors" strokeWidth={1.5} />
-              </button>
-            </nav>
-          </div>
-        </div>
-      </div>
     </header>
   )
 }

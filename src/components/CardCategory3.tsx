@@ -1,5 +1,5 @@
 import { TCategory } from '@/data/categories'
-import { TService } from '@/data/services'
+import { TService } from '@/data/services-data'
 import convertNumbThousand from '@/utils/convertNumbThousand'
 import Image from 'next/image'
 import Link from 'next/link'
