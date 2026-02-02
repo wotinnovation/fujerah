@@ -2,8 +2,8 @@
 
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import ButtonPrimary from '@/shared/ButtonPrimary'
 
 interface SlideContent {
   heading: string
@@ -89,8 +89,79 @@ const HeroSectionWithSearchForm1 = ({
 
   return (
     <div className={clsx('relative w-full', className)}>
-      {/* Hero Container - matches navbar width */}
-      <div className="relative h-[250px] lg:h-[350px] xl:h-[400px] overflow-hidden rounded-3xl">
+      {/* MOBILE VERSION - Separate containers */}
+      <div className="md:hidden">
+        {/* Mobile Image Container */}
+        <div className="relative h-[250px] overflow-hidden rounded-3xl">
+          {/* Background Image Carousel */}
+          <div className="absolute inset-0 rounded-3xl overflow-hidden">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={clsx(
+                  'absolute inset-0 transition-opacity duration-1000 ease-in-out',
+                  currentIndex === index ? 'opacity-100' : 'opacity-0'
+                )}
+              >
+                <Image
+                  src={slide.image}
+                  alt={slide.heading}
+                  fill
+                  className="object-cover scale-105 rounded-3xl"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Content Container - Positioned below image */}
+        <div className="relative -mt-20 px-4 z-10">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl">
+            {/* Heading */}
+            <div
+              className={clsx(
+                'transition-all duration-500',
+                isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+              )}
+            >
+              <h1 className="text-xl font-semibold text-gray-800 mb-2 leading-tight drop-shadow-sm">
+                {currentSlide.heading}
+              </h1>
+            </div>
+
+            {/* Description */}
+            <div
+              className={clsx(
+                'transition-all duration-500 delay-100',
+                isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+              )}
+            >
+              <p className="text-ls text-gray-700 mb-3 drop-shadow-sm line-clamp-2">
+                {currentSlide.description}
+              </p>
+            </div>
+
+            {/* Custom Glassmorphism Button */}
+            <div
+              className={clsx(
+                'transition-all duration-500 delay-200',
+                isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+              )}
+            >
+              <Link 
+                href={currentSlide.buttonLink}
+                className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 font-medium text-xs px-5 py-2 rounded-full shadow-xl transition-all duration-300 hover:bg-red-600 hover:border-red-600 hover:text-white hover:scale-105"
+              >
+                {currentSlide.buttonText}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* DESKTOP VERSION - Original layout */}
+      <div className="hidden md:block relative h-[350px] xl:h-[400px] overflow-hidden rounded-3xl">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 rounded-3xl overflow-hidden">
           {slides.map((slide, index) => (
@@ -115,11 +186,11 @@ const HeroSectionWithSearchForm1 = ({
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
         </div>
 
-        {/* Content Container - matches navbar container width with fixed dimensions */}
+        {/* Desktop Content Container */}
         <div className="max-w-6xl mx-auto px-4 h-full relative z-10">
           <div className="flex flex-col justify-center h-full max-w-2xl">
             {/* Glassmorphism Content Card - Fixed Size */}
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl w-full h-[200px] md:h-[250px] lg:h-[280px] overflow-hidden flex flex-col">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl w-full h-[250px] lg:h-[280px] overflow-hidden flex flex-col">
               {/* Heading - Fixed height with overflow */}
               <div
                 className={clsx(
@@ -127,7 +198,7 @@ const HeroSectionWithSearchForm1 = ({
                   isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                 )}
               >
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight drop-shadow-lg line-clamp-2">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight  line-clamp-2">
                   {currentSlide.heading}
                 </h1>
               </div>
@@ -139,24 +210,24 @@ const HeroSectionWithSearchForm1 = ({
                   isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                 )}
               >
-                <p className="text-sm md:text-base lg:text-lg text-white/95 mb-4 md:mb-6 drop-shadow-md line-clamp-2">
+                <p className="text-sm md:text-base lg:text-lg text-white/95 mb-4 md:mb-6  line-clamp-2">
                   {currentSlide.description}
                 </p>
               </div>
 
-              {/* Button - Fixed at bottom */}
+              {/* Custom Glassmorphism Button */}
               <div
                 className={clsx(
                   'transition-all duration-500 delay-200 mt-auto',
                   isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                 )}
               >
-                <ButtonPrimary 
-                  href={currentSlide.buttonLink} 
-                  className="text-sm md:text-base px-6 py-2 md:px-8 md:py-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 !text-white !bg-red-600 !border-red-600 hover:!bg-white/30 hover:backdrop-blur-md hover:!border-white/40 hover:!text-white"
+                <Link 
+                  href={currentSlide.buttonLink}
+                  className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold text-sm md:text-base px-6 py-2 md:px-8 md:py-3 rounded-full shadow-xl transition-all duration-300 hover:bg-red-600 hover:border-red-600 hover:scale-105"
                 >
                   {currentSlide.buttonText}
-                </ButtonPrimary>
+                </Link>
               </div>
             </div>
           </div>

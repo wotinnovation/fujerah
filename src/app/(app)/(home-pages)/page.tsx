@@ -66,7 +66,7 @@ async function Page() {
         </div> */}
         {/* <SectionOurFeatures className="py-14" /> */}
 
-            <Divider />
+           
      <SectionImageContent
       // subHeading="About Us"
       heading="Register for eServices"
@@ -95,7 +95,7 @@ async function Page() {
         variant: 'primary',
       }}
     />
-       <Divider />
+
        <UsefulServicesSection />
           <Divider />
           {/* <SectionImageContent
@@ -130,8 +130,8 @@ async function Page() {
         
          <Divider />
         <SectionHowItWork
-      title="Quick Overview"
-      subheading="Fast and easy"
+      title="Quick Overview of FIA"
+      subheading="Fujairah International Airport made easy for you."
       data={[
         {
           id: 1,
@@ -142,7 +142,7 @@ async function Page() {
         {
           id: 2,
           img: '/images/fjr/checkin.jpg',
-          title: 'Booking',
+          title: 'Shop & Dine at FIA',
           desc: 'Reserve your stay with our secure and simple booking system',
         },
       ]}

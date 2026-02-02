@@ -253,7 +253,7 @@ const AsymmetricBentoGrid: FC = () => {
         {/* Header Section */}
         <div className="mb-8 text-left lg:mb-12">
           <h2 className="text-4xl font-semibold text-red-600 dark:text-red-600 lg:text-4xl xl:text-4xl">
-            Discover Fujairah
+            Discover Fujairah International Airport
           </h2>
         </div>
 
