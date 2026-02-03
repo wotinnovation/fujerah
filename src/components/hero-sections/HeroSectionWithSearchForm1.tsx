@@ -107,7 +107,7 @@ const HeroSectionWithSearchForm1 = ({
             >
               <Link 
                 href={`/${currentSlide.slug}`}
-                className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 font-medium text-xs px-5 py-2 rounded-full shadow-xl transition-all duration-300 hover:bg-red-600 hover:border-red-600 hover:text-white hover:scale-105"
+                className="inline-block bg-red-600 backdrop-blur-md border border-red-600 text-white font-medium text-xs px-5 py-2 rounded-full shadow-xl transition-all duration-300 hover:bg-white hover:border-white hover:text-red-600 hover:scale-105"
               >
                 {currentSlide.buttonText}
               </Link>
