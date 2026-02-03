@@ -2,7 +2,6 @@
 
 import { Popover, PopoverButton, PopoverPanel, RadioGroup, Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/react'
 import { 
-  TruckIcon,
   ArrowsRightLeftIcon,
   ClockIcon,
   MapPinIcon,
@@ -15,6 +14,7 @@ import {
   UserGroupIcon,
   PhoneIcon
 } from '@heroicons/react/24/outline'
+import { Car } from 'lucide-react'
 import { useState } from 'react'
 
 // Emirates and their shuttle routes with demo times
@@ -130,66 +130,66 @@ const ShuttleServicesModal = () => {
   }
 
   return (
-    <div className="relative hidden lg:block">
-      <div className="fixed bottom-8 left-8 z-40 flex items-center">
+    <div className="relative">
+      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 lg:bottom-8 lg:left-8 z-40 flex items-center">
         <Popover className="relative">
           {({ open, close }) => (
             <>
               <PopoverButton
-                className={`group relative rounded-full bg-gradient-to-br from-red-600 to-rose-700 p-4 shadow-2xl transition-all duration-500 hover:scale-110 hover:shadow-red-500/50 focus:outline-hidden ${
+                className={`group relative rounded-full bg-gradient-to-br from-red-600 to-rose-700 p-3 sm:p-4 shadow-2xl transition-all duration-500 hover:scale-110 hover:shadow-red-500/50 focus:outline-hidden ${
                   open ? 'scale-110 shadow-red-500/60' : 'hover:rotate-[-12deg]'
                 }`}
               >
-                <TruckIcon className="h-8 w-8 text-white transition-transform duration-300 group-hover:scale-110" />
+                <Car className="h-6 w-6 sm:h-8 sm:w-8 text-white transition-transform duration-300 group-hover:scale-110" />
                 
                 {/* Animated pulse ring */}
                 <span className="absolute inset-0 rounded-full bg-red-500/40 opacity-75 animate-ping"></span>
                 
-                {/* Tooltip */}
-                <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg bg-white/90 backdrop-blur-md border border-white/30 px-3 py-1.5 text-sm font-medium text-red-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                {/* Tooltip - hidden on mobile */}
+                <span className="hidden lg:block absolute left-full ml-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg bg-white/90 backdrop-blur-md border border-white/30 px-3 py-1.5 text-sm font-medium text-red-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
                   Shuttle Services
                 </span>
               </PopoverButton>
 
               <PopoverPanel
                 transition
-                style={{ width: '750px' }}
-                className="absolute bottom-full left-0 mb-4 ml-6 transform overflow-hidden rounded-3xl bg-black/40 backdrop-blur-xl border border-white/30 transition data-closed:translate-y-4 data-closed:opacity-0 data-closed:scale-95"
+                style={{ width: '95vw', maxWidth: '650px' }}
+                className="absolute bottom-full left-0 mb-4 max-h-[70vh] sm:max-h-[85vh] overflow-y-auto transform rounded-2xl sm:rounded-3xl bg-black/40 backdrop-blur-xl border border-white/30 transition data-closed:translate-y-4 data-closed:opacity-0 data-closed:scale-95"
               >
                 <div className="relative">
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-red-600 via-red-700 to-rose-700 px-8 py-6">
+                  <div className="bg-gradient-to-r from-red-600 via-red-700 to-rose-700 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
                     <button
                       onClick={() => close()}
-                      className="absolute top-4 right-4 rounded-full p-1.5 transition-colors hover:bg-white/20 text-white/80 hover:text-white"
+                      className="absolute top-3 sm:top-4 right-3 sm:right-4 rounded-full p-1.5 transition-colors hover:bg-white/20 text-white/80 hover:text-white"
                     >
                       <XMarkIcon className="h-5 w-5" />
                     </button>
                     
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-xl bg-white/20 p-2.5">
-                        <TruckIcon className="h-7 w-7 text-white" />
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="rounded-lg sm:rounded-xl bg-white/20 p-2 sm:p-2.5">
+                        <Car className="h-5 w-5 sm:h-7 sm:w-7 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white">Airport Shuttle Free Service</h3>
-                        <p className="text-sm text-white">Travel across all Emirates</p>
+                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white">Airport Shuttle Free Service</h3>
+                        <p className="text-xs sm:text-sm text-white">Travel across all Emirates</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Trip Type Toggle */}
-                  <div className="px-8 pt-8">
-                    <RadioGroup value={tripType} onChange={handleTripTypeChange} className="flex gap-3">
+                  <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8">
+                    <RadioGroup value={tripType} onChange={handleTripTypeChange} className="flex gap-2 sm:gap-3">
                       <RadioGroup.Option value="departure">
                         {({ checked }) => (
                           <button
-                            className={`flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 ${
+                            className={`flex items-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                               checked
                                 ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                             }`}
                           >
-                            <ArrowRightIcon className="h-4 w-4" />
+                            <ArrowRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                             Departure
                           </button>
                         )}
@@ -197,13 +197,13 @@ const ShuttleServicesModal = () => {
                       <RadioGroup.Option value="arrival">
                         {({ checked }) => (
                           <button
-                            className={`flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 ${
+                            className={`flex items-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                               checked
                                 ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                             }`}
                           >
-                            <ArrowLeftIcon className="h-4 w-4" />
+                            <ArrowLeftIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                             Arrival
                           </button>
                         )}
@@ -212,41 +212,41 @@ const ShuttleServicesModal = () => {
                   </div>
 
                   {/* Route Selection */}
-                  <div className="px-8 pt-8">
-                    <div className="flex items-center gap-4">
+                  <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                       {/* From */}
                       <div className="flex-1">
-                        <label className="mb-2 block text-xs font-semibold text-white/70 uppercase tracking-wider">
+                        <label className="mb-1.5 sm:mb-2 block text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-wider">
                           From
                         </label>
                         <Listbox value={fromEmirate} onChange={(e) => { setFromEmirate(e); setSelectedTime(null); }}>
                           <div className="relative">
-                            <ListboxButton className="relative w-full rounded-xl border border-white/40 bg-white/10 backdrop-blur-sm py-3.5 pl-4 pr-10 text-left transition-all hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-red-500/30">
-                              <div className="flex items-center gap-3">
-                                <MapPinIcon className="h-5 w-5 text-red-400" />
+                            <ListboxButton className="relative w-full rounded-lg sm:rounded-xl border border-white/40 bg-white/10 backdrop-blur-sm py-2.5 sm:py-3.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-left transition-all hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-red-500/30">
+                              <div className="flex items-center gap-2 sm:gap-3">
+                                <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
                                 <div>
-                                  <span className="block font-semibold text-white">{fromEmirate.name}</span>
-                                  <span className="block text-xs text-white/70">{fromEmirate.shortName}</span>
+                                  <span className="block text-sm sm:text-base font-semibold text-white">{fromEmirate.name}</span>
+                                  <span className="block text-[10px] sm:text-xs text-white/70">{fromEmirate.shortName}</span>
                                 </div>
                               </div>
-                              <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
+                              <ChevronDownIcon className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
                             </ListboxButton>
-                            <ListboxOptions className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/90 backdrop-blur-xl border border-white/40 py-2 focus:outline-hidden">
+                            <ListboxOptions className="absolute z-20 mt-2 max-h-48 sm:max-h-60 w-full overflow-auto rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-xl border border-white/40 py-1.5 sm:py-2 focus:outline-hidden">
                               {emirates.filter(e => e.id !== toEmirate.id).map((emirate) => (
                                 <ListboxOption
                                   key={emirate.id}
                                   value={emirate}
-                                  className="cursor-pointer select-none px-4 py-3 transition-colors hover:bg-red-50 data-[focus]:bg-red-50"
+                                  className="cursor-pointer select-none px-3 sm:px-4 py-2 sm:py-3 transition-colors hover:bg-red-50 data-[focus]:bg-red-50"
                                 >
                                   {({ selected }) => (
                                     <div className="flex items-center justify-between">
-                                      <div className="flex items-center gap-2">
-                                        <span className={`font-medium ${selected ? 'text-red-600' : 'text-neutral-900'}`}>
+                                      <div className="flex items-center gap-1.5 sm:gap-2">
+                                        <span className={`text-sm sm:text-base font-medium ${selected ? 'text-red-600' : 'text-neutral-900'}`}>
                                           {emirate.name}
                                         </span>
-                                        <span className="text-xs text-neutral-500">({emirate.shortName})</span>
+                                        <span className="text-[10px] sm:text-xs text-neutral-500">({emirate.shortName})</span>
                                       </div>
-                                      {selected && <CheckIcon className="h-5 w-5 text-red-600" />}
+                                      {selected && <CheckIcon className="h-4 w-4 sm:h-5 sm:w-5 text-red-600" />}
                                     </div>
                                   )}
                                 </ListboxOption>
@@ -259,44 +259,44 @@ const ShuttleServicesModal = () => {
                       {/* Swap Button */}
                       <button
                         onClick={handleSwap}
-                        className="mt-7 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 p-3 text-white transition-all hover:bg-red-600 hover:text-white hover:scale-110 hover:rotate-180 duration-300"
+                        className="self-center sm:mt-7 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 p-2 sm:p-3 text-white transition-all hover:bg-red-600 hover:text-white hover:scale-110 sm:hover:rotate-180 duration-300 rotate-90 sm:rotate-0"
                       >
-                        <ArrowsRightLeftIcon className="h-5 w-5" />
+                        <ArrowsRightLeftIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
 
                       {/* To */}
                       <div className="flex-1">
-                        <label className="mb-2 block text-xs font-semibold text-white/70 uppercase tracking-wider">
+                        <label className="mb-1.5 sm:mb-2 block text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-wider">
                           To
                         </label>
                         <Listbox value={toEmirate} onChange={(e) => { setToEmirate(e); setSelectedTime(null); }}>
                           <div className="relative">
-                            <ListboxButton className="relative w-full rounded-xl border border-white/40 bg-white/10 backdrop-blur-sm py-3.5 pl-4 pr-10 text-left transition-all hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-red-500/30">
-                              <div className="flex items-center gap-3">
-                                <MapPinIcon className="h-5 w-5 text-red-400" />
+                            <ListboxButton className="relative w-full rounded-lg sm:rounded-xl border border-white/40 bg-white/10 backdrop-blur-sm py-2.5 sm:py-3.5 pl-3 sm:pl-4 pr-8 sm:pr-10 text-left transition-all hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-red-500/30">
+                              <div className="flex items-center gap-2 sm:gap-3">
+                                <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-red-400" />
                                 <div>
-                                  <span className="block font-semibold text-white">{toEmirate.name}</span>
-                                  <span className="block text-xs text-white/70">{toEmirate.shortName}</span>
+                                  <span className="block text-sm sm:text-base font-semibold text-white">{toEmirate.name}</span>
+                                  <span className="block text-[10px] sm:text-xs text-white/70">{toEmirate.shortName}</span>
                                 </div>
                               </div>
-                              <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
+                              <ChevronDownIcon className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-white/70" />
                             </ListboxButton>
-                            <ListboxOptions className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/90 backdrop-blur-xl border border-white/40 py-2 focus:outline-hidden">
+                            <ListboxOptions className="absolute z-20 mt-2 max-h-48 sm:max-h-60 w-full overflow-auto rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-xl border border-white/40 py-1.5 sm:py-2 focus:outline-hidden">
                               {emirates.filter(e => e.id !== fromEmirate.id).map((emirate) => (
                                 <ListboxOption
                                   key={emirate.id}
                                   value={emirate}
-                                  className="cursor-pointer select-none px-4 py-3 transition-colors hover:bg-red-50 data-[focus]:bg-red-50"
+                                  className="cursor-pointer select-none px-3 sm:px-4 py-2 sm:py-3 transition-colors hover:bg-red-50 data-[focus]:bg-red-50"
                                 >
                                   {({ selected }) => (
                                     <div className="flex items-center justify-between">
-                                      <div className="flex items-center gap-2">
-                                        <span className={`font-medium ${selected ? 'text-red-600' : 'text-neutral-900'}`}>
+                                      <div className="flex items-center gap-1.5 sm:gap-2">
+                                        <span className={`text-sm sm:text-base font-medium ${selected ? 'text-red-600' : 'text-neutral-900'}`}>
                                           {emirate.name}
                                         </span>
-                                        <span className="text-xs text-neutral-500">({emirate.shortName})</span>
+                                        <span className="text-[10px] sm:text-xs text-neutral-500">({emirate.shortName})</span>
                                       </div>
-                                      {selected && <CheckIcon className="h-5 w-5 text-red-600" />}
+                                      {selected && <CheckIcon className="h-4 w-4 sm:h-5 sm:w-5 text-red-600" />}
                                     </div>
                                   )}
                                 </ListboxOption>
@@ -310,32 +310,32 @@ const ShuttleServicesModal = () => {
 
                   {/* Route Info Card */}
                   {routeInfo && (
-                    <div className="px-8 pt-8">
-                      <div className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-5">
-                        <div className="flex items-center justify-between mb-5">
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2 text-white">
-                              <ClockIcon className="h-5 w-5 text-red-600" />
-                              <span className="font-semibold text-lg">{routeInfo.duration}</span>
+                    <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8">
+                      <div className="rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-3 sm:p-4 lg:p-5">
+                        <div className="flex items-center justify-between mb-3 sm:mb-4 lg:mb-5">
+                          <div className="flex items-center gap-3 sm:gap-4">
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-white">
+                              <ClockIcon className="h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
+                              <span className="font-semibold text-base sm:text-lg">{routeInfo.duration}</span>
                             </div>
                           
                           </div>
-                          <div className="rounded-lg bg-emerald-500/20 px-3 py-1.5 text-xs font-semibold text-emerald-700">
+                          <div className="rounded-md sm:rounded-lg bg-emerald-500/20 px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-emerald-700">
                             {routeInfo.departures.length} departures daily
                           </div>
                         </div>
 
                         {/* Departure Times */}
                         <div>
-                          <label className="mb-3 block text-xs font-semibold text-white/70 uppercase tracking-wider">
+                          <label className="mb-2 sm:mb-3 block text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-wider">
                             Select Departure Time
                           </label>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {routeInfo.departures.map((time, index) => (
                               <button
                                 key={index}
                                 onClick={() => setSelectedTime(time)}
-                                className={`rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                                className={`rounded-md sm:rounded-lg px-2.5 sm:px-4 py-1.5 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
                                   selectedTime === time
                                     ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white scale-105'
                                     : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-red-300'
@@ -351,37 +351,37 @@ const ShuttleServicesModal = () => {
                   )}
 
                   {/* Action Buttons */}
-                  <div className="p-8 pt-8">
-                    <div className="flex gap-4">
+                  <div className="p-4 sm:p-6 lg:p-8 pt-4 sm:pt-6 lg:pt-8">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                       <a
                         href="tel:+97192229111"
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-red-500 bg-transparent px-5 py-3.5 font-semibold text-white transition-all hover:bg-red-600/20"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg sm:rounded-xl border-2 border-red-500 bg-transparent px-4 sm:px-5 py-2.5 sm:py-3.5 text-sm sm:text-base font-semibold text-white transition-all hover:bg-red-600/20"
                       >
-                        <PhoneIcon className="h-5 w-5" />
+                        <PhoneIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                         Call to Book
                       </a>
                       <button
                         disabled={!selectedTime}
-                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3.5 font-semibold transition-all duration-300 ${
+                        className={`flex flex-1 items-center justify-center gap-2 rounded-lg sm:rounded-xl px-4 sm:px-5 py-2.5 sm:py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 ${
                           selectedTime
                             ? 'bg-gradient-to-r from-red-600 via-red-700 to-rose-700 text-white hover:scale-[1.02] active:scale-[0.98]'
                             : 'cursor-not-allowed bg-white/10 backdrop-blur-sm border border-white/20 text-white/50'
                         }`}
                       >
-                        <CalendarDaysIcon className="h-5 w-5" />
+                        <CalendarDaysIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                         Book Now
                       </button>
                     </div>
                     
                     {/* Quick Info */}
-                    <div className="mt-5 flex items-center justify-center gap-6 text-sm text-white/70">
-                      <div className="flex items-center gap-2">
-                        <UserGroupIcon className="h-4 w-4" />
+                    <div className="mt-3 sm:mt-5 flex items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-white/70">
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <UserGroupIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         <span>Max 8 passengers</span>
                       </div>
-                      <div className="h-4 w-px bg-white/30"></div>
-                      <div className="flex items-center gap-2">
-                        <TruckIcon className="h-4 w-4" />
+                      <div className="h-3 sm:h-4 w-px bg-white/30"></div>
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <Car className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         <span>Luxury shuttles</span>
                       </div>
                     </div>

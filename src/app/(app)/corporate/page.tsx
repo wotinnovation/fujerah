@@ -20,7 +20,7 @@ const sections = [
   {
     title: 'eServices',
     icon: Globe,
-    color: 'bg-blue-500',
+    color: 'bg-gradient-to-br from-red-600 via-red-700 to-red-800',
     links: [
       { title: 'Online Booking', href: '/corporate/online-booking', description: 'Book services digitally' },
       { title: 'Corporate Rates', href: '/corporate/corporate-rates', description: 'Special business pricing' },
@@ -32,7 +32,7 @@ const sections = [
   {
     title: 'Business with FIA',
     icon: Building2,
-    color: 'bg-emerald-500',
+    color: 'bg-gradient-to-br from-red-600 via-red-700 to-red-800',
     links: [
       { title: 'Business Opportunities', href: '/corporate/opportunities', description: 'Partner with FIA' },
       { title: 'Tenders & Procurement', href: '/corporate/tenders', description: 'Current opportunities' },
@@ -44,7 +44,7 @@ const sections = [
   {
     title: 'About FIA',
     icon: Users,
-    color: 'bg-amber-500',
+    color: 'bg-gradient-to-br from-red-600 via-red-700 to-red-800',
     links: [
       { title: 'About Us', href: '/corporate/about', description: 'Our story' },
       { title: 'Leadership Team', href: '/corporate/leadership', description: 'Meet our leaders' },
@@ -56,7 +56,7 @@ const sections = [
   {
     title: 'Media & Resources',
     icon: Newspaper,
-    color: 'bg-red-500',
+    color: 'bg-gradient-to-br from-red-600 via-red-700 to-red-800',
     links: [
       { title: 'Press Releases', href: '/corporate/press-releases', description: 'Official announcements' },
       { title: 'News & Updates', href: '/corporate/news', description: 'Latest news' },
@@ -215,20 +215,20 @@ export default function CorporatePage() {
               <p className="text-red-100">Our business development team is here to discuss opportunities.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              
+              <Link
                 href="mailto:business@fja.ae"
                 className="flex items-center gap-2 bg-white text-red-600 px-6 py-3 rounded-xl font-semibold hover:bg-red-50 transition-colors"
-              
+              >
                 <Mail className="w-5 h-5" />
                 business@fja.ae
-         
-              
+              </Link>
+              <Link
                 href="tel:+97192226700"
                 className="flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-400 transition-colors"
-              
+              >
                 <Phone className="w-5 h-5" />
                 +971 9 2226700
-         
+              </Link>
             </div>
           </div>
         </div>

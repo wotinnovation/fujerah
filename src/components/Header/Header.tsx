@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Plane, Briefcase, Search, Mail, Phone, MapPin, Clock, User } from 'lucide-react'
+import { Plane, Briefcase, Search, Mail, Phone, MapPin, Clock, User, Thermometer } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Header() {
@@ -11,9 +11,11 @@ export default function Header() {
     gregorian: '',
     hijri: '',
   })
+  const [currentTime, setCurrentTime] = useState('')
+  const [temperature, setTemperature] = useState<number | null>(null)
 
   useEffect(() => {
-    const updateDate = () => {
+    const updateDateTime = () => {
       // Get current date in Fujairah timezone (UAE - Gulf Standard Time)
       const options: Intl.DateTimeFormatOptions = {
         weekday: 'long',
@@ -36,17 +38,50 @@ export default function Header() {
       
       const hijriDate = new Date().toLocaleDateString('en-US', hijriOptions)
 
+      // Get current time
+      const timeOptions: Intl.DateTimeFormatOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Dubai',
+      }
+      const time = new Date().toLocaleTimeString('en-US', timeOptions)
+
       setCurrentDate({
         gregorian: gregorianDate,
         hijri: hijriDate,
       })
+      setCurrentTime(time)
     }
 
-    updateDate()
-    // Update date every minute to keep it current
-    const interval = setInterval(updateDate, 60000)
+    // Fetch temperature (using Fujairah coordinates)
+    const fetchTemperature = async () => {
+      try {
+        const response = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=25.1128&longitude=56.3269&current_weather=true`
+        )
+        const data = await response.json()
+        if (data.current_weather) {
+          setTemperature(Math.round(data.current_weather.temperature))
+        }
+      } catch (error) {
+        console.error('Failed to fetch temperature:', error)
+      }
+    }
 
-    return () => clearInterval(interval)
+    updateDateTime()
+    fetchTemperature()
+    
+    // Update time every second
+    const timeInterval = setInterval(updateDateTime, 1000)
+    // Update temperature every 10 minutes
+    const tempInterval = setInterval(fetchTemperature, 600000)
+
+    return () => {
+      clearInterval(timeInterval)
+      clearInterval(tempInterval)
+    }
   }, [])
 
   return (
@@ -55,7 +90,7 @@ export default function Header() {
       <div className="border-b border-neutral-200">
         <div className="max-w-7xl mx-auto ">
           <div className="flex h-12 items-center justify-between text-xs">
-            {/* Left: Location and Date */}
+            {/* Left: Location, Time, Temperature and Date */}
             <div className="flex items-center gap-6 text-neutral-600">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5" />
@@ -63,7 +98,18 @@ export default function Header() {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5" />
-                <span>{currentDate.gregorian} - {currentDate.hijri}</span>
+                <span className="font-semibold text-red-600">{currentTime}</span>
+              </div>
+              {temperature !== null && (
+                <div className="flex items-center gap-2">
+                  <Thermometer className="w-3.5 h-3.5" />
+                  <span className="font-semibold text-red-600">{temperature}°C</span>
+                </div>
+              )}
+              <div className="flex items-center gap-2">
+                <span>{currentDate.gregorian}</span>
+                <span className="text-neutral-400">•</span>
+                <span>{currentDate.hijri}</span>
               </div>
             </div>
 
@@ -294,7 +340,7 @@ export default function Header() {
 
                 {/* Right Menu Items - 70% */}
                 <div className="w-[70%] grid grid-cols-4 gap-8 p-8">
-                  {/* Column 1 - FIXED LINKS */}
+                  {/* Column 1 */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">eServices</h3>
                     <ul className="space-y-3">
@@ -306,7 +352,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 2 - FIXED LINKS */}
+                  {/* Column 2 */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">Business with FIA</h3>
                     <ul className="space-y-3">
@@ -318,7 +364,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 3 - FIXED LINKS */}
+                  {/* Column 3 */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">About FIA</h3>
                     <ul className="space-y-3">
@@ -330,7 +376,7 @@ export default function Header() {
                     </ul>
                   </div>
 
-                  {/* Column 4 - FIXED LINKS */}
+                  {/* Column 4 */}
                   <div>
                     <h3 className="text-lg font-bold text-red-600 mb-4">Media & Resources</h3>
                     <ul className="space-y-3">

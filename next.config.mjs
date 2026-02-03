@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    minimumCacheTTL: 2678400 * 6, // 3 months
+    minimumCacheTTL: 2678400 * 6, // 6 months
+    qualities: [75, 85],
     remotePatterns: [
       {
         protocol: 'https',
@@ -28,14 +29,14 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
-       {
+      {
         protocol: 'https',
         hostname: 'picsum.photos',
-         port: '',
+        port: '',
         pathname: '/**',
       },
     ],
   },
 }
 
-export default nextConfig
+export default nextConfig;

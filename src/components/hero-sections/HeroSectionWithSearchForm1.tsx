@@ -80,9 +80,10 @@ const HeroSectionWithSearchForm1 = ({
                 isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
               )}
             >
-              <h1 className="text-xl font-semibold text-red-600/90 mb-2 leading-tight ">
-                {currentSlide.heading}
-              </h1>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-600/90 mb-2 leading-tight">
+  {currentSlide.heading}
+</h1>
+
             </div>
 
             {/* Description */}

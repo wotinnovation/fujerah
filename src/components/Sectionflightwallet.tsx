@@ -26,7 +26,7 @@ const DEMO_DATA: SectionFlightWalletProps['data'] = [
   {
     id: 1,
     img: '/images/fjr/flight.jpg',
-    imgDark: '/images/flight-wallet-dark.png',
+   
     title: 'Get Your Free Flight',
     subtitle: 'Earn & Save with Smart Wallet',
     desc: 'Book smarter, travel better. Earn rewards on every booking and unlock exclusive flight discounts with our integrated wallet system.',

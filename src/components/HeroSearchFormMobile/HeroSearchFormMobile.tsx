@@ -58,13 +58,13 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
         <HugeiconsIcon icon={Search01Icon} size={20} color="currentColor" strokeWidth={1.5} />
 
         <div className="ms-3 flex-1 overflow-hidden text-start">
-          <span className="block text-sm font-medium">Check your flights</span>
+<span className="block text-xs font-medium whitespace-nowrap overflow-hidden text-ellipsis max-[280px]:max-w-[120px]">Check your flight status</span>
           <span className="mt-0.5 block text-xs font-light text-neutral-500 dark:text-neutral-400">
             
           </span>
         </div>
 
-        <span className="absolute end-2 top-1/2 flex h-9 w-9 -translate-y-1/2 transform items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-600 dark:text-neutral-300">
+        <span className="absolute end-2 top-1/2 flex h-9 w-9 -translate-y-1/2 transform items-center justify-center rounded-full ">
           <HugeiconsIcon icon={FilterVerticalIcon} size={20} color="currentColor" strokeWidth={1.5} />
         </span>
       </button>

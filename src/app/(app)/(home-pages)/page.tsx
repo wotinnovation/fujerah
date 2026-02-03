@@ -52,9 +52,13 @@ async function Page() {
         />
 
         <div>
-          <HeadingWithSub subheading="Explore the best places to stay in the world.">
-            Why Connect To FIA
-          </HeadingWithSub>
+
+
+
+<HeadingWithSub subheading="Your Gateway to the Emirates - Experience Seamless Travel and World-Class Service">
+  <span className="hidden md:block">Why Connect To FIA</span>
+  <span className="block md:hidden">Welcome to Fujairah International Airport</span>
+</HeadingWithSub>
                <BgGlassmorphism />
          <SectionServices services={await getServices()}  />
          
