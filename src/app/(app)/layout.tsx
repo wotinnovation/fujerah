@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import { ApplicationLayout } from './application-layout'
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Fujairah International Airport',
   description:
-    'Chisfis is a modern and elegant template for Next.js, Tailwind CSS, and TypeScript. It is designed to be simple and easy to use, with a focus on performance and accessibility.',
-  keywords: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Chisfis', 'Travel', 'E-commerce', 'Booking', 'Cars'],
+    'Fujairah International Airport - Your gateway to the UAE East Coast. Book flights, car rentals, airport transfers, and explore travel services at Fujairah Airport.',
+  keywords: ['Fujairah International Airport', 'Fujairah Airport', 'FJR Airport', 'UAE Airport', 'Flights to Fujairah', 'Airport Transfer', 'Car Rental Fujairah', 'UAE East Coast', 'Travel Fujairah'],
 }
 
 export default function Layout({ children, params }: { children: React.ReactNode; params: any }) {

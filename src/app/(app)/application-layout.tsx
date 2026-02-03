@@ -51,7 +51,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
           <button
             onClick={() => setDrawerOpen(true)}
             aria-label="Open menu"
-            className="flex-shrink-0 rounded-xl p-2 text-neutral-600 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
+            className="flex-shrink-0 rounded-xl p-2 text-red-600 transition-colors duration-200 hover:bg-red-100 hover:text-red-700 dark:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
           >
             <Menu className="h-7 w-7" strokeWidth={1.8} />
           </button>
